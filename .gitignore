@@ -1,0 +1,28 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+.python-version
+.mypy_cache
+.pytest_cache
+.ruff_cache
+.python_version
+
+# Virtual environments
+.venv
+
+# IDE
+.vscode
+
+# Django
+.queries.txt
+db.sqlite3
+src/static/admin
+src/static/debug_toolbar
+src/static/django_extensions
+# Secrets
+.env
+dumps

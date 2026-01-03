@@ -1,0 +1,75 @@
+# Python
+
+**pycache**/
+_.pyc
+_.pyo
+_.pyd
+_.pdb
+_.egg
+_.egg-info/
+.eggs/
+
+# Virtual environments
+
+.env
+.venv
+venv/
+ENV/
+env/
+
+# Package managers
+
+pip-log.txt
+pip-delete-this-directory.txt
+poetry.lock
+Pipfile.lock
+
+# Testing / coverage
+
+.coverage
+htmlcov/
+.tox/
+.nox/
+.pytest_cache/
+
+# Mypy
+
+.mypy_cache/
+
+# Ruff
+
+.ruff_cache/
+
+# Build artifacts
+
+build/
+dist/
+_.egg-info/
+_.manifest
+\*.spec
+
+# IDE / editor configs
+
+.idea/
+.vscode/
+_.swp
+_.swo
+
+# OS files
+
+.DS_Store
+Thumbs.db
+
+# Logs
+
+\*.log
+
+# Docker
+
+.dockerignore
+Dockerfile
+
+# Git
+
+.git
+.gitignore

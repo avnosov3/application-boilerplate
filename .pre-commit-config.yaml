@@ -1,0 +1,25 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: check-yaml
+      - id: check-merge-conflict
+      - id: check-case-conflict
+      - id: end-of-file-fixer
+
+  - repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+    rev: v2.15.0
+    hooks:
+      - id: pretty-format-yaml
+        args:
+          - --autofix
+          - --preserve-quotes
+          - --indent=4
+
+  - repo: local
+    hooks:
+      - id: run-make-pr
+        name: Run make pr
+        entry: bash -c "make pr"
+        language: system
+        pass_filenames: false

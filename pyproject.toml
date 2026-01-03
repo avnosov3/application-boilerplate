@@ -1,0 +1,81 @@
+[project]
+name = "application-boilerplate"
+version = "0.1.0"
+description = "FastAPI application architecture template with clear layering, interfaces-first approach, DI, and easy swap of the web framework"
+readme = "README.md"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "dependency-injector>=4.48.3",
+    "fastapi>=0.128.0",
+    "httpx>=0.28.1",
+    "pydantic>=2.12.5",
+    "pydantic-settings>=2.12.0",
+    "python-multipart>=0.0.21",
+    "sqlalchemy>=2.0.45",
+    "uvicorn>=0.40.0",
+]
+
+[tool.pytest]
+pythonpath = ["src"]
+testpaths = ["tests"]
+env = [
+    "LOG_LEVEL=ERROR",
+    "DATABASE_URL=sqlite+aiosqlite:///:memory:",
+]
+
+[tool.mypy]
+ignore_missing_imports = true
+exclude = ["query_logs", "tests", "migrations"]
+
+[[tool.mypy.overrides]]
+module = ["tests.*"]
+ignore_errors = true
+
+[tool.ruff]
+src = ["src"]
+line-length = 120
+target-version = "py313"
+exclude = ["query_logs", "migrations", ".venv"]
+
+[tool.ruff.lint]
+select = ["ALL"]
+exclude = []
+ignore = [
+    "BLE001",  # Do not catch blind exception: `Exception`
+    "D1",  # Missing docstring
+
+    "D203",  # Blank line before class
+    "D205",  # 1 blank line required between summary line and description
+    "D212",  # Multi line summary first line
+    "D415",  # First line should end with a period, question mark, or exclamation point
+
+    "TD002",  # Missing author in TODO
+    "TD003",  # Missing issue link for this TODO
+
+    "FIX002",  # Line contains TODO, consider resolving the issue
+
+    "FBT001",  # Boolean-typed positional argument in function definition
+
+    "COM812",  # Missing trailing comma
+
+    "PLR0913", # More than 5 params
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["SLF001", "ANN201", "S101", "PLR0913"]
+
+[tool.ruff.lint.pydocstyle]
+# Use Google-style docstrings.
+convention = "google"
+
+[dependency-groups]
+dev = [
+    "aiosqlite>=0.22.1",
+    "mypy==1.19.0",
+    "pre-commit>=4.5.1",
+    "pytest>=9.0.2",
+    "pytest-asyncio>=1.3.0",
+    "pytest-env>=1.2.0",
+    "pytest-mock>=3.15.1",
+    "ruff>=0.14.10",
+]

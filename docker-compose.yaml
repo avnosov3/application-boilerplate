@@ -1,0 +1,12 @@
+services:
+    application-boilerplate:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        ports:
+        -   ${OUTER_PORT:-8000}:${INNER_PORT:-8000}
+        environment:
+            IS_DEV_ENV: ${IS_DEV_ENV:-0}
+            INNER_PORT: ${INNER_PORT:-8000}
+            DATABASE_URL: "${DATABASE_URL?ERROR: DATABASE_URL must be set}"
+            LOG_LEVEL: ${LOG_LEVEL-INFO}
